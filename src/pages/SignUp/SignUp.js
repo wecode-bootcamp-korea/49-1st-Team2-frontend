@@ -1,26 +1,28 @@
 import React from "react";
 import "./SignUp.scss";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const SignUp = () => {
+  const nav = useNavigate();  
   const req = () => {
-    fetch("http://10.58.52.160:8000/users", {
-      method: "POST",
-      body: JSON.stringify({
-        email: "youngeun@gmail.com",
-        password: "9875648579!!",
-        name: "이영은",
-      }),
-      headers: {
-        "Content-Type": "application/json;charset=utf-8",
-      },
-    })
-      .then((res) => {
-        return res.json();
-      })
-      .then((result) => {
-        console.log(result);
-      });
+    //   fetch("http://10.58.52.160:8000/users", {
+    //     method: "POST",
+    //     body: JSON.stringify({
+    //       email: "youngeun@gmail.com",
+    //       password: "9875648579!!",
+    //       name: "이영은",
+    //     }),
+    //     headers: {
+    //       "Content-Type": "application/json;charset=utf-8",
+    //     },
+    //   })
+    //     .then((res) => {
+    //       return res.json();
+    //     })
+    //     .then((result) => {
+    //       console.log(result);
+    //     });
+    nav("/signupComplete");
   };
 
   const Year = () => {
@@ -70,7 +72,7 @@ const SignUp = () => {
       <header>
         <Link to="/">
           <img
-            src={process.env.PUBLIC_URL + "Back_arrow.png"}
+            src={process.env.PUBLIC_URL + "/images/Back_arrow.png"}
             alt="앞페이지로 넘어갈 수 있는 뒤로가기 버튼이며 왼쪽을 가르키는 화살표 모양의 아이콘이다."
           />
         </Link>

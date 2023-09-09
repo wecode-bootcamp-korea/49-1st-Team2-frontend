@@ -1,0 +1,95 @@
+.Bblack {
+  background-color: #000000;
+}
+.Bgray60 {
+  background-color: #999999;
+}
+.Bgray80 {
+  background-color: #cccccc;
+}
+.Bgray88 {
+  background-color: #e0e0e0;
+}
+.Bgary98 {
+  background-color: #fafafa;
+}
+.Bwhite {
+  background-color: #ffffff;
+}
+.Bblue {
+  background-color: #2d71f7;
+}
+.Bnavy {
+  background-color: #083e7f;
+}
+.Bred {
+  background-color: #ff3636;
+}
+.Cwhite {
+  color: white;
+}
+.Cblue {
+  color: #2d71f7;
+}
+.Cnavy {
+  color: #083e7f;
+}
+.Cred {
+  color: red;
+}
+.Cgray60 {
+  color: #999999;
+}
+
+.fillBtn {
+  background-color: #2d71f7;
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+  border: none;
+  height: 56px;
+  width: 120px;
+
+  &:hover,
+  &:active {
+    background-color: #083e7f;
+    color: white;
+  }
+
+  &:disabled {
+    background-color: #cccccc;
+    color: white;
+  }
+}
+
+.bordBtn {
+  background-color: #ffffff;
+  color: #2d71f7;
+  border: 1px solid #2d71f7;
+  height: 56px;
+  width: 120px;
+  border-radius: 8px;
+
+  &:hover,
+  &:active {
+    background-color: #ffffff;
+    color: #2d71f7;
+    border: 1px solid #083e7f;
+  }
+
+  &:disabled {
+    background-color: #ffffff;
+    color: #999999;
+    border: 1px solid #cccccc;
+  }
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+}
