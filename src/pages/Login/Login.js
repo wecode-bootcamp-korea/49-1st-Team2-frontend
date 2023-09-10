@@ -77,7 +77,7 @@ const Login = () => {
         <div className="btnWrap">
           <input
             type="button"
-            className="fillBtn btn "
+            className="fillBtn btn"
             disabled={!isTurnOn}
             value="로그인"
             onClick={req}

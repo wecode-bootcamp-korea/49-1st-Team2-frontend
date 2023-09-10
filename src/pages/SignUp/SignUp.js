@@ -3,7 +3,7 @@ import "./SignUp.scss";
 import { Link, useNavigate } from "react-router-dom";
 
 const SignUp = () => {
-  const nav = useNavigate();  
+  const nav = useNavigate();
   const req = () => {
     //   fetch("http://10.58.52.160:8000/users", {
     //     method: "POST",
@@ -80,94 +80,90 @@ const SignUp = () => {
       </header>
       <section className="putInfo">
         <h1>회원가입</h1>
-        <ul className="put">
-          <li className="baseInfo">
-            <ul required className="normalInfo">
-              <label htmlFor="userEmail">
-                기본 정보 <span className="redText">필수 사항</span>
-              </label>
-              <li>
+        <div className="put">
+          <div className="baseInfo">
+            <label htmlFor="userEmail">
+              기본 정보 <span className="redText">필수 사항</span>
+            </label>
+            <div className="normalInfo" required>
+              <div className="infoWrap">
                 <input type="email" id="userEmail" placeholder="이메일" />
-              </li>
-              <li>
+              </div>
+              <div className="infoWrap">
                 <input type="password" id="userPw" placeholder="비밀번호" />
-              </li>
-              <li>
+              </div>
+              <div className="infoWrap">
                 <input
                   type="password"
                   id="userPwCheck"
-                  placeholder="비밀번호확인"
+                  placeholder="비밀번호 확인"
                 />
-              </li>
-            </ul>
-          </li>
-          <li className="nickname">
-            <ul>
-              <label htmlFor="userName">
-                닉네임과 프로필 이미지{" "}
-                <span className="subText">선택 사항</span>
-              </label>
-              <li>
+              </div>
+            </div>
+          </div>
+          <div className="nicknamewrap">
+            <label htmlFor="userName">
+              닉네임<span className="subText">선택 사항</span>
+            </label>
+            <div className="nickname">
+              <div className="inputWrap">
                 <input
                   type="name"
                   id="userName"
                   placeholder="닉네임"
                   autoComplete="off"
                 />
-              </li>
-            </ul>
-          </li>
-          <li className="telephone">
-            <ul className="telUser">
-              <label htmlFor="userPhone">
-                전화번호 <span className="subText">선택 사항</span>
-              </label>
-              <div>
-                <ul>
-                  <li className="phoneWrap">
-                    <select id="userPhone" defaultValue="num1">
-                      <option value="num1">010</option>
-                      <option value="num2">011</option>
-                      <option value="num3">016</option>
-                      <option value="num4">018</option>
-                    </select>
-                  </li>
-                  <li className="telWrap">
-                    <input
-                      type="tel"
-                      id="userTel"
-                      placeholder="휴대폰 번호를 입력해 주세요"
-                    />
-                  </li>
-                </ul>
               </div>
-            </ul>
-          </li>
-          <li className="birthday">
-            <ul>
-              <label htmlFor="birthYear">
-                생일 <span className="subText">선택 사항</span>
-              </label>
-              <li>
-                <ul className="birthSelect">
-                  <li className="year">
-                    <Year />
-                  </li>
-                  <li className="month">
-                    <Month />
-                  </li>
-                  <li className="day">
-                    <Day />
-                  </li>
-                </ul>
-              </li>
-            </ul>
-          </li>
-        </ul>
+              <div className="fileSelect">
+                <input type="button" value="파일 선택"></input>
+                <div> 파일을 선택해주세요 </div>
+              </div>
+            </div>
+          </div>
+          <div className="telephone">
+            <label htmlFor="userPhone">
+              전화번호 <span className="subText">선택 사항</span>
+            </label>
+            <div className="telUser">
+              <select id="userPhone" defaultValue="num1">
+                <option value="num1">010</option>
+                <option value="num2">011</option>
+                <option value="num3">016</option>
+                <option value="num4">018</option>
+              </select>
+              <input
+                type="tel"
+                id="userTel"
+                placeholder="휴대폰 번호를 입력해 주세요"
+              />
+            </div>
+          </div>
+          <div className="birthday">
+            <label htmlFor="birthYear">
+              생일 <span className="subText">선택 사항</span>
+            </label>
+            <div className="birthSelcet">
+              <div className="year">
+                <Year />
+              </div>
+              <div className="month">
+                <Month />
+              </div>
+              <div className="day">
+                <Day />
+              </div>
+            </div>
+          </div>
+        </div>
       </section>
-      <footer>
-        <input type="button" className="btn" value="회원가입" onClick={req} />
-      </footer>
+      <section className="buttonWrap">
+        <input
+          type="button"
+          className="fillBtn btn"
+          value="회원가입"
+          onClick={req}
+        />
+      </section>
     </div>
   );
 };

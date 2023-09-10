@@ -52,35 +52,22 @@
 
     .btnWrap {
       padding: 0;
-      margin: 8px 0;
+      margin: 16px 0;
+      border: none;
+
+      .btn {
+        font-size: 18px;
+        font-weight: bold;
+        width: 100%;
+        height: 100%;
+        color: #fff;
+        padding-left: 0;
+        border-radius: none;
+      }
     }
 
     #email {
       margin-bottom: 8px;
-    }
-
-    .btn {
-      font-size: 18px;
-      font-weight: bold;
-      width: 100%;
-      height: 100%;
-      color: #fff;
-      padding-left: 0;
-    }
-
-    .btnOn {
-      font-size: 18px;
-      font-weight: bold;
-      width: 100%;
-      height: 100%;
-      color: #fff;
-      background-color: #2d71f7;
-      border: none;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding-left: 0;
-      opacity: 50%;
     }
 
     ul {

@@ -1,9 +1,14 @@
+@import "../../styles/common.scss";
 .signUp {
   width: 576px;
-  height: 844px;
+  height: 100%px;
   border-radius: 16px;
   margin: 30px auto;
   border: 1px solid #e0e0e0;
+  padding-bottom: 40px;
+  @include center;
+  flex-direction: column;
+  gap: 24px;
 
   ul {
     list-style: none;
@@ -15,163 +20,234 @@
     font-size: 20px;
     display: flex;
     align-items: center;
-    margin-bottom: 24px;
+    margin: 24px 0 0 0;
     font-weight: bold;
+    padding: 8px 0 8px 16px;
 
     img {
       width: 40px;
       height: 40px;
-      margin-right: 4px;
-      margin-top: 6px;
+      margin-top: 2px;
     }
   }
 
   .putInfo {
     width: 100%;
-    height: 644px;
     padding: 0 24px;
-    margin-bottom: 24px;
 
     h1 {
       font-size: 24px;
+      font-weight: bold;
     }
 
     .put {
-      > li {
-        padding-top: 24px;
+      @include center;
+      gap: 24px;
+      flex-direction: column;
+      align-self: stretch;
+      margin-top: 24px;
 
-        label {
-          font-weight: bold;
-          display: block;
-          margin-bottom: 8px;
+      .baseInfo {
+        width: 100%;
+
+        > label {
+          width: 100%;
           position: relative;
+          display: block;
+
+          > .redText {
+            position: absolute;
+            right: 0;
+          }
         }
 
-        input,
-        select {
-          border-radius: 6px;
-          border: 1px solid #e0e0e0;
-          font-size: 16px;
-        }
-
-        .normalInfo li input {
+        .normalInfo {
+          @include center;
+          flex-direction: column;
           width: 100%;
-          padding: 19px 0 15px 16px;
-          margin-bottom: 8px;
-        }
+          gap: 8px;
+          margin-top: 8px;
 
-        #userName {
+          .infoWrap {
+            width: 100%;
+
+            > input {
+              width: 100%;
+              padding: 19px 0 15px 16px;
+              border-radius: 6px;
+              border: 1px solid #e0e0e0;
+              font-size: 16px;
+            }
+          }
+        }
+      }
+
+      .nicknamewrap {
+        width: 100%;
+        @include center;
+        flex-direction: column;
+        margin-top: 8px;
+
+        > label {
           width: 100%;
-          padding: 19px 0 15px 16px;
         }
 
-        .telUser {
-          div ul {
-            display: flex;
+        .nickname {
+          @include center;
+          flex-direction: column;
+          gap: 8px;
+          margin-top: 8px;
+          width: 100%;
 
-            .phoneWrap {
-              width: 28%;
-              height: 100%;
-              font-size: 17px;
-              color: #999;
-              margin-right: 2%;
+          > label {
+            margin-top: 8px;
+            margin-bottom: 0;
+          }
 
-              #userPhone {
-                width: 100%;
-                padding: 16px 0 15px 16px;
-              }
+          .inputWrap {
+            width: 100%;
+
+            > input {
+              width: 100%;
+              padding: 19px 0 15px 16px;
+              border-radius: 6px;
+              border: 1px solid #e0e0e0;
+              font-size: 16px;
             }
           }
 
-          .telWrap {
-            width: 70%;
+          .fileSelect {
+            @include center;
+            width: 100%;
+            height: 100%;
 
-            #userTel {
-              width: 100%;
-              padding: 16px 0 15px 16px;
+            > input {
+              padding: 12px 21px 11px 22px;
+              border-radius: 4px;
+              border: 1px solid #999;
+              background-color: #fff;
+              font-weight: bold;
             }
+
+            div {
+              width: 100%;
+              padding: 8px 0 8px 16px;
+              border-radius: 4px;
+              border: 1px solid #e0e0e0;
+              height: 43px;
+              margin-left: 8px;
+              line-height: 27px;
+              font-size: 14px;
+              color: #999;
+            }
+          }
+        }
+      }
+
+      .telephone {
+        @include center;
+        flex-direction: column;
+        width: 100%;
+        height: 100%;
+
+        > label {
+          width: 100%;
+        }
+
+        .telUser {
+          @include center;
+          width: 100%;
+          margin-top: 8px;
+
+          > select {
+            padding: 16px 37px 15px 16px;
+            font-size: 17px;
+            @include center;
+            border-radius: 4px;
+            border: 1px solid #e0e0e0;
+            background-color: #fff;
+          }
+
+          > input {
+            width: 100%;
+            padding: 19px 0 15px 16px;
+            margin-left: 8px;
+            border-radius: 4px;
+            border: 1px solid #e0e0e0;
+            background-color: #fff;
+            font-size: 16px;
           }
         }
       }
 
       .birthday {
-        ul .birthSelect {
+        @include center;
+        flex-direction: column;
+
+        > label {
           width: 100%;
-          display: flex;
+        }
 
-          li {
-            margin-right: 2%;
+        > div {
+          @include center;
+          gap: 8px;
+
+          select {
+            width: 100%;
+            padding: 16px 0 15px 16px;
+            font-size: 18px;
+            color: #999;
+            border-radius: 4px;
+            border: 1px solid #e0e0e0;
+            margin-top: 8px;
           }
-
-          li:last-child {
-            margin-right: 0;
-          }
-
-          .year {
-            width: 26%;
-
-            #birthYear {
-              width: 100%;
-              padding: 16px 0px 15px 16px;
-              font-size: 16px;
-              color: #999;
-            }
-          }
-
-          .month {
-            width: 35%;
-
-            #birthMonth {
-              width: 100%;
-              padding: 16px 0px 15px 16px;
-              font-size: 16px;
-              color: #999;
-            }
-          }
-
+          .month,
           .day {
-            width: 35%;
-
-            #birthDay {
-              width: 100%;
-              padding: 16px 0px 15px 16px;
-              font-size: 16px;
-              color: #999;
+            > select {
+              padding-right: 112px;
+            }
+          }
+          .year {
+            > select {
+              padding-right: 41px;
             }
           }
         }
       }
 
-      .redText {
-        position: absolute;
-        right: 0;
-        color: red;
-        font-size: 14px;
-      }
-
-      .subText {
-        position: absolute;
-        right: 0;
-        font-weight: normal;
-        font-size: 14px;
+      label {
+        // margin-bottom: 8px;
+        position: relative;
+        > span {
+          position: absolute;
+          right: 0;
+          color: #999;
+        }
+        .redText {
+          color: red;
+        }
       }
     }
   }
-
-  footer {
+  .buttonWrap {
     width: 100%;
-    height: 96px;
-    padding: 0 24px 40px 24px;
+    padding: 0 24px;
 
     .btn {
       width: 100%;
-      height: 100%;
-      background-color: #2d71f7;
-      border-radius: 6px;
-      border: none;
-      color: #fff;
-      font-size: 22px;
       font-weight: bold;
+      font-size: 18px;
     }
+
+    // .btn {
+    //   width: 100%;
+    //   height: 100%;
+    //   background-color: #2d71f7;
+    //   border-radius: 6px;
+    //   border: none;
+    //   color: #fff;
+    //   font-size: 22px;
+    //   font-weight: bold;
+    // }
   }
 }
