@@ -6,4 +6,5 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 global.Dong = "1111";
 global.Hyun = "2222";
 global.Eun = "3333";
+
 root.render(<Router />);
