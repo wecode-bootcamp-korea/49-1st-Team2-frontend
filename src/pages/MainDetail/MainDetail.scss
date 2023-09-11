@@ -1,3 +1,4 @@
+@import "../../styles/common.scss";
 .mainDetail {
   width: 576px;
   height: 844px;
@@ -21,9 +22,11 @@
     header {
       display: flex;
       height: 56px;
-      padding: 8px 433px 8px 16px;
+      padding: 8px 0 8px 16px;
       align-items: center;
       align-self: stretch;
+      font-size: 20px;
+      font-weight: bold;
 
       img {
         width: 40px;
@@ -32,40 +35,38 @@
       }
     }
 
-    .contents {
-      display: flex;
-      width: 528px;
-      padding: 0px 8px 24px 8px;
+    .contentsCompo {
+      @include center;
       flex-direction: column;
-      align-items: flex-start;
-      gap: 16px;
-      border-bottom: 1px solid #e6e6e6;
+      gap: 24px;
+      border-bottom: 1px solid #e0e0e0;
+      padding: 0 8px 24px 8px;
 
-      .info {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        align-self: stretch;
-
-        .name {
-          display: flex;
-          padding-right: 0px;
-          align-items: center;
-          gap: 16px;
-          flex: 1 0 0;
-
-          span {
-            font-family: Apple SD Gothic Neo;
-            font-size: 20px;
-            font-style: normal;
-            font-weight: 700;
-            line-height: normal;
+      .nameWrap {
+        @include center;
+        width: 100%;
+        > label {
+          width: 100%;
+          position: relative;
+          margin-left: 16px;
+          font-size: 20px;
+          font-weight: bold;
+          > span {
+            position: absolute;
+            right: 0;
+            font-weight: normal;
+            font-size: 16px;
+            color: #999;
           }
         }
-
-        .time {
-          color: #999999;
-        }
+      }
+      .textBox {
+        text-align: justify;
+        line-height: 20px;
+      }
+      .commentGo {
+        width: 100%;
+        color: #999;
       }
     }
 
@@ -101,6 +102,10 @@
       align-self: stretch;
       overflow: auto;
       height: 100%;
+
+      &::-webkit-scrollbar {
+        display: none;
+      }
 
       .post {
         display: flex;
@@ -143,6 +148,9 @@
             justify-content: space-between;
             align-items: center;
             align-self: stretch;
+            > span {
+              font-weight: bold;
+            }
           }
           .frame {
             display: flex;

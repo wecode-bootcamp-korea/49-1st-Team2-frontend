@@ -1,3 +1,4 @@
+@import "../../styles/common.scss";
 .writeList {
   height: 844px;
   border-radius: 16px;
@@ -23,16 +24,13 @@
     padding-bottom: 0px;
     align-items: flex-start;
     gap: 24px;
-    flex: 1 0 0;
     align-self: stretch;
   }
   .writeContent {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
     gap: 8px;
-    flex: 1 0 0;
-    align-self: stretch;
+    padding-bottom: 24px;
 
     p {
       font-size: 20px;
@@ -42,11 +40,9 @@
     }
     textarea {
       width: 100%;
-      display: flex;
-      padding: 15px 307px 617px 16px;
+      @include center;
+      padding: 15px 300px 572px 16px;
       flex-direction: column;
-      align-items: center;
-      align-self: stretch;
       border-radius: 6px;
       border: 1px solid var(--Grey88, #e0e0e0);
       background: var(--White, #fff);
@@ -61,5 +57,10 @@
     align-items: flex-start;
     align-self: stretch;
     border-top: 1px solid #e6e6e6;
+    .bordBtn,
+    .fillBtn {
+      font-size: 16px;
+      font-weight: bold;
+    }
   }
 }
