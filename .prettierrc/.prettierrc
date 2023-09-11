@@ -1,0 +1,6 @@
+{
+  "tabWidth": 2, // 탭 사이즈 2칸
+  "endOfLine": "lf", // CRLF 대신 LF를 강제
+  "arrowParens": "avoid", // 화살표 함수 파라미터 자리 불필요한 소괄호 제거
+  "singleQuote": true // 쌍따옴표 대신 홑따옴표 사용
+}

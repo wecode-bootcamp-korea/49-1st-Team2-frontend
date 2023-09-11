@@ -1,4 +1,3 @@
-// import React, { useState, useEffect } from "react";
 import ReactDOM from "react-dom/client";
 import Router from "./Router";
 import "./styles/reset.scss";
