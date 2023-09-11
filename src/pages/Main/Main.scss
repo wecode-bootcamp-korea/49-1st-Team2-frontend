@@ -1,8 +1,8 @@
+@import "../../styles/common.scss";
 .main {
   width: var(--container, 576px);
   height: 844px;
-  display: flex;
-  align-items: center;
+  @include center;
   flex-direction: column;
   border-radius: 16px;
   margin: 30px auto;
@@ -20,16 +20,58 @@
     display: grid;
     gap: 24px;
     overflow: auto;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
   }
   .content {
     display: grid;
     gap: 16px;
+
     border-bottom: 1px solid #e6e6e6;
     padding: 0px 8px 24px 8px;
+
+    .nameWrap {
+      @include center;
+      gap: 16px;
+
+      > img,
+      > label {
+        width: 100%;
+      }
+
+      > img {
+        width: 48px;
+        height: 48px;
+      }
+
+      > label {
+        font-weight: bold;
+        position: relative;
+        > span {
+          position: absolute;
+          right: 0;
+          font-weight: normal;
+          color: #999;
+        }
+      }
+    }
+
+    .textBox {
+      text-align: justify;
+      line-height: 24px;
+    }
+    .comment {
+      color: #999;
+      font-size: 16px;
+    }
   }
 
   .writeBtn {
     float: right;
     width: 120px;
+    font-size: 18px;
+    font-weight: bold;
   }
 }
