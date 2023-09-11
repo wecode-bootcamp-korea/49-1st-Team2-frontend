@@ -3,6 +3,13 @@ import "./SignUp.scss";
 import { Link, useNavigate } from "react-router-dom";
 
 const SignUp = () => {
+  const [userEmail, setEmail] = useState("");
+  const [userPassword, setUserPassword] = useState("");
+  const [userCheckPassword, setUserCheckPassword] = useState("");
+  const [userNickname, setNickname] = useState("");
+  const [checkEmail, setCheckEmail] = useState(false);
+  const [checkNickname, setCheckNickname] = useState(false);
+
   const nav = useNavigate();
   const req = () => {
     fetch("http://10.58.52.160:8000/users", {
@@ -67,10 +74,6 @@ const SignUp = () => {
     );
   };
 
-  const [userEmail, setEmail] = useState("");
-  const [userPassword, setUserPassword] = useState("");
-  const [userNickname, setNickname] = useState("");
-
   const handleUserEmail = (e) => {
     setEmail(e.target.value);
   };
@@ -79,9 +82,33 @@ const SignUp = () => {
     setUserPassword(e.target.value);
   };
 
+  const handleUserCheckPassword = (e) => {
+    setUserCheckPassword(e.target.value);
+  };
+
   const handleNickname = (e) => {
     setNickname(e.target.value);
   };
+
+  const checkEmailBtn = () => {
+    if (userEmail.includes("@")) {
+      console.log("이메일 확인 : " + userEmail);
+      setCheckEmail(true);
+    } else {
+      alert("이메일에 @는 필수입니다.");
+    }
+  };
+
+  const checkNickNameBtn = (e) => {
+    console.log("닉네임 확인 : " + userNickname);
+    setCheckNickname(true);
+  };
+
+  const completeSign =
+    checkNickname &&
+    checkEmail &&
+    userPassword > 8 &&
+    userPassword === userCheckPassword;
 
   return (
     <div className="signUp">
@@ -108,12 +135,15 @@ const SignUp = () => {
                   id="userEmail"
                   placeholder="이메일"
                   onChange={handleUserEmail}
+                  disabled={checkEmail}
                 />
                 <div className="checkBtnWrap">
                   <input
                     type="button"
                     className="bordBtn sign"
                     value="중복 확인"
+                    onClick={checkEmailBtn}
+                    disabled={checkEmail}
                   />
                 </div>
               </div>
@@ -130,6 +160,7 @@ const SignUp = () => {
                   type="password"
                   id="userPwCheck"
                   placeholder="비밀번호 확인"
+                  onChange={handleUserCheckPassword}
                 />
               </div>
               <div className="infoWrap">
@@ -139,12 +170,15 @@ const SignUp = () => {
                   placeholder="닉네임"
                   autoComplete="off"
                   onChange={handleNickname}
+                  disabled={checkNickname}
                 />
                 <div className="checkBtnWrap">
                   <input
                     type="button"
                     className="bordBtn sign"
                     value="중복 확인"
+                    onClick={checkNickNameBtn}
+                    disabled={checkNickname}
                   />
                 </div>
               </div>
@@ -203,6 +237,7 @@ const SignUp = () => {
           className="fillBtn btn"
           value="회원가입"
           onClick={req}
+          disabled={!completeSign}
         />
       </section>
     </div>
