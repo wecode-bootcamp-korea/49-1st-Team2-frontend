@@ -3,6 +3,7 @@ import "./Main.scss";
 import { Link, useNavigate } from "react-router-dom";
 
 const Main = () => {
+  
   const nav = useNavigate();
   const goWrite = () => {
     nav("/writeList");
