@@ -18,30 +18,29 @@ const Login = () => {
   const isTurnOn = userEmail.includes("@") && userPassword.length >= 5;
 
   const req = () => {
-    //   fetch("http://10.58.52.97:8000/login", {
-    //     method: "POST",
-    //     body: JSON.stringify({
-    //       email: "youngeun@gmail.com",
-    //       password: "9875648579!!",
-    //       name: "이영은",
-    //     }),
-    //     headers: {
-    //       "Content-Type": "application/json;charset=utf-8",
-    //     },
-    //   })
-    //     .then((res) => {
-    //       return res.json();
-    //     })
-    //     .then((result) => {
-    //       console.log(result);
-    //       if (result.message === "Login Successful") {
-    //         localStorage.setItem("token", result.token);
-    //         Link("/Main");
-    //         alert("로그인 성공");
-    //       } else {
-    //         alert("로그인 실패");
-    //       }
-    //     });
+    fetch("http://10.58.52.97:8000/login", {
+      method: "POST",
+      body: JSON.stringify({
+        email: userEmail,
+        password: userPassword,
+      }),
+      headers: {
+        "Content-Type": "application/json;charset=utf-8",
+      },
+    })
+      .then((res) => {
+        return res.json();
+      })
+      .then((result) => {
+        console.log(result);
+        if (result.message === "Login Successful") {
+          localStorage.setItem("token", result.token);
+          Link("/Main");
+          alert("로그인 성공");
+        } else {
+          alert("로그인 실패");
+        }
+      });
     nav("/main");
   };
 

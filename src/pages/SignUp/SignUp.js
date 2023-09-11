@@ -1,27 +1,27 @@
-import React from "react";
+import React, { useState } from "react";
 import "./SignUp.scss";
 import { Link, useNavigate } from "react-router-dom";
 
 const SignUp = () => {
   const nav = useNavigate();
   const req = () => {
-    //   fetch("http://10.58.52.160:8000/users", {
-    //     method: "POST",
-    //     body: JSON.stringify({
-    //       email: "youngeun@gmail.com",
-    //       password: "9875648579!!",
-    //       name: "이영은",
-    //     }),
-    //     headers: {
-    //       "Content-Type": "application/json;charset=utf-8",
-    //     },
-    //   })
-    //     .then((res) => {
-    //       return res.json();
-    //     })
-    //     .then((result) => {
-    //       console.log(result);
-    //     });
+    fetch("http://10.58.52.160:8000/users", {
+      method: "POST",
+      body: JSON.stringify({
+        email: userEmail,
+        password: userPassword,
+        name: userNickname,
+      }),
+      headers: {
+        "Content-Type": "application/json;charset=utf-8",
+      },
+    })
+      .then((res) => {
+        return res.json();
+      })
+      .then((result) => {
+        console.log(result);
+      });
     nav("/signupComplete");
   };
 
@@ -67,6 +67,22 @@ const SignUp = () => {
     );
   };
 
+  const [userEmail, setEmail] = useState("");
+  const [userPassword, setUserPassword] = useState("");
+  const [userNickname, setNickname] = useState("");
+
+  const handleUserEmail = (e) => {
+    setEmail(e.target.value);
+  };
+
+  const handleUserPassword = (e) => {
+    setUserPassword(e.target.value);
+  };
+
+  const handleNickname = (e) => {
+    setNickname(e.target.value);
+  };
+
   return (
     <div className="signUp">
       <header>
@@ -87,10 +103,27 @@ const SignUp = () => {
             </label>
             <div className="normalInfo" required>
               <div className="infoWrap">
-                <input type="email" id="userEmail" placeholder="이메일" />
+                <input
+                  type="email"
+                  id="userEmail"
+                  placeholder="이메일"
+                  onChange={handleUserEmail}
+                />
+                <div className="checkBtnWrap">
+                  <input
+                    type="button"
+                    className="bordBtn sign"
+                    value="중복 확인"
+                  />
+                </div>
               </div>
               <div className="infoWrap">
-                <input type="password" id="userPw" placeholder="비밀번호" />
+                <input
+                  type="password"
+                  id="userPw"
+                  placeholder="비밀번호"
+                  onChange={handleUserPassword}
+                />
               </div>
               <div className="infoWrap">
                 <input
@@ -99,23 +132,31 @@ const SignUp = () => {
                   placeholder="비밀번호 확인"
                 />
               </div>
-            </div>
-          </div>
-          <div className="nicknamewrap">
-            <label htmlFor="userName">
-              닉네임<span className="subText">선택 사항</span>
-            </label>
-            <div className="nickname">
-              <div className="inputWrap">
+              <div className="infoWrap">
                 <input
                   type="name"
                   id="userName"
                   placeholder="닉네임"
                   autoComplete="off"
+                  onChange={handleNickname}
                 />
+                <div className="checkBtnWrap">
+                  <input
+                    type="button"
+                    className="bordBtn sign"
+                    value="중복 확인"
+                  />
+                </div>
               </div>
+            </div>
+          </div>
+          <div className="nicknamewrap">
+            <label htmlFor="profile">
+              프로필 사진<span className="subText">선택 사항</span>
+            </label>
+            <div className="nickname">
               <div className="fileSelect">
-                <input type="button" value="파일 선택"></input>
+                <input type="button" id="profile" value="파일 선택"></input>
                 <div> 파일을 선택해주세요 </div>
               </div>
             </div>
