@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 const Find = () => {
   const [userEmail, setUserEmail] = useState("");
-  const [popUp, setPopUp] = useState("");
+  const [popUp, setPopUp] = useState("off");
 
   const checkEmail = true;
 
@@ -68,7 +68,7 @@ const Find = () => {
               />
             </div>
           </div>
-          <div className={`textRed ${popUp}`}>
+          <div className={popUp}>
             이메일이 발송되었습니다. 이메일을 확인해주세요.
           </div>
         </div>

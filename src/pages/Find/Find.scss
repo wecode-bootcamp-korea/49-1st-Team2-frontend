@@ -56,17 +56,18 @@
         }
       }
 
-      .textRed {
-        display: none;
-        &on {
-          margin-top: 8px;
-          color: red;
-          font-size: 18px;
-          position: absolute;
-          left: 32px;
-          top: 100px;
-          opacity: 0;
-        }
+      .on {
+        margin-top: 8px;
+        color: red;
+        font-size: 18px;
+        position: absolute;
+        left: 32px;
+        top: 100px;
+        opacity: 100;
+      }
+
+      .off {
+        opacity: 0;
       }
     }
     .imgWrap {
