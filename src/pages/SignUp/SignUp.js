@@ -129,7 +129,11 @@ const SignUp = () => {
 
   const checkNickNameBtn = (e) => {
     console.log("닉네임 확인 : " + userNickname);
-    setCheckNickname(true);
+    if (e.target.value) {
+      return null;
+    } else {
+      setCheckNickname(true);
+    }
   };
 
   const handleUserPhone = (e) => {
