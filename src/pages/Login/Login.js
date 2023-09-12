@@ -18,29 +18,29 @@ const Login = () => {
   const isTurnOn = userEmail.includes("@") && userPassword.length >= 5;
 
   const req = () => {
-    fetch("http://10.58.52.220:8000/users/login", {
-      method: "POST",
-      body: JSON.stringify({
-        email: userEmail,
-        password: userPassword,
-      }),
-      headers: {
-        "Content-Type": "application/json;charset=utf-8",
-      },
-    })
-      .then((res) => {
-        return res.json();
-      })
-      .then((result) => {
-        if (result.message === "login success") {
-          console.log(result);
-          localStorage.setItem("token", result.token);
-          nav("/Main");
-          alert("로그인 성공");
-        } else {
-          alert("로그인 실패");
-        }
-      });
+    // fetch("http://10.58.52.220:8000/users/login", {
+    //   method: "POST",
+    //   body: JSON.stringify({
+    //     email: userEmail,
+    //     password: userPassword,
+    //   }),
+    //   headers: {
+    //     "Content-Type": "application/json;charset=utf-8",
+    //   },
+    // })
+    //   .then((res) => {
+    //     return res.json();
+    //   })
+    //   .then((result) => {
+    //     if (result.message === "login success") {
+    //       console.log(result);
+    //       localStorage.setItem("token", result.token);
+    //       nav("/Main");
+    //       alert("로그인 성공");
+    //     } else {
+    //       alert("로그인 실패");
+    //     }
+    //   });
   };
 
   return (
