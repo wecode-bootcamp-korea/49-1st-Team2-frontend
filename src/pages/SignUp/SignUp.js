@@ -26,8 +26,14 @@ const SignUp = () => {
         email: userEmail,
         password: userPassword,
         nickname: userNickname,
-        phoneNumber: userPhoneNumber.inter + "-" + userPhoneNumber.number,
-        birthday: year + "/" + month + "/" + day,
+        phoneNumber:
+          userPhoneNumber.number.length > 0
+            ? userPhoneNumber.inter + "-" + userPhoneNumber.number
+            : null,
+        birthday:
+          year == 0 || month == 0 || day == 0
+            ? null
+            : year + "/" + month + "/" + day,
         profileImage: "http://www.google.com",
       }),
       headers: {
@@ -120,7 +126,6 @@ const SignUp = () => {
 
   const checkEmailBtn = () => {
     if (userEmail.includes("@")) {
-      console.log("이메일 확인 : " + userEmail);
       setCheckEmail(true);
     } else {
       alert("이메일에 @는 필수입니다.");
@@ -128,8 +133,7 @@ const SignUp = () => {
   };
 
   const checkNickNameBtn = (e) => {
-    console.log("닉네임 확인 : " + userNickname);
-    if (e.target.value) {
+    if (userNickname == "") {
       return null;
     } else {
       setCheckNickname(true);
