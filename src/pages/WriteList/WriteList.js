@@ -1,9 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import "./WriteList.scss";
 import { Link, useNavigate } from "react-router-dom";
 
 const WriteList = () => {
   const nav = useNavigate();
+  const [textSave, setTextSave] = useState("");
+
+  const handleTextSave = (e) => {
+    setTextSave(e.target.value);
+    console.log(textSave);
+  };
 
   const goBack = () => {
     nav("/main");
@@ -20,7 +26,10 @@ const WriteList = () => {
           <img src="/images/testImg.png" />
           <div className="writeContent">
             <p>Name</p>
-            <textarea Placeholder="스레드를 시작하세요."></textarea>
+            <textarea
+              Placeholder="스레드를 시작하세요."
+              onChange={handleTextSave}
+            ></textarea>
           </div>
         </div>
         <div className="btnWrap">
