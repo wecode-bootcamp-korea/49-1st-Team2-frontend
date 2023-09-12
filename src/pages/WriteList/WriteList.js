@@ -22,28 +22,28 @@ const WriteList = (props) => {
   //   .then();
 
   const req = () => {
-    fetch("http://10.58.52.97:8000/login", {
-      method: "POST",
-      body: JSON.stringify({
-        text: textSave,
-      }),
-      headers: {
-        "Content-Type": "application/json;charset=utf-8",
-        Authorization: localStorage.getItem("token"),
-      },
-    })
-      .then((res) => {
-        return res.json();
-      })
-      .then((result) => {
-        console.log(result);
-        if (token === "Login Successful") {
-          alert("게시글이 등록이 완료되었습니다.");
-          Link("/Main");
-        } else {
-          alert("오류가 발생했습니다.");
-        }
-      });
+    // fetch("http://10.58.52.97:8000/login", {
+    //   method: "POST",
+    //   body: JSON.stringify({
+    //     text: textSave,
+    //   }),
+    //   headers: {
+    //     "Content-Type": "application/json;charset=utf-8",
+    //     Authorization: localStorage.getItem("token"),
+    //   },
+    // })
+    //   .then((res) => {
+    //     return res.json();
+    //   })
+    //   .then((result) => {
+    //     console.log(result);
+    //     if (token === "Login Successful") {
+    //       alert("게시글이 등록이 완료되었습니다.");
+    //       Link("/Main");
+    //     } else {
+    //       alert("오류가 발생했습니다.");
+    //     }
+    //   });
   };
 
   return (
