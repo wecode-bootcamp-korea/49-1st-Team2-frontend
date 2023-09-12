@@ -90,7 +90,9 @@ const Login = () => {
           <li>
             <Link to="/signUp">회원 가입</Link>
           </li>
-          <li>비밀번호 찾기</li>
+          <li>
+            <Link to="/find">비밀번호 찾기</Link>
+          </li>
         </ul>
       </section>
     </div>
