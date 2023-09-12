@@ -104,11 +104,14 @@ const SignUp = () => {
     setCheckNickname(true);
   };
 
+  const regex_pattern = /.*[!@#$%^&*()_+{}\[\]:;<>,.?~\\|-].*/;
+
   const completeSign =
     checkNickname &&
     checkEmail &&
-    userPassword > 8 &&
-    userPassword === userCheckPassword;
+    userPassword.length > 8 &&
+    userPassword === userCheckPassword &&
+    regex_pattern.test(userPassword);
 
   return (
     <div className="signUp">
