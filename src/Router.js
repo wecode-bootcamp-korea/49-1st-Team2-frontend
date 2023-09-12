@@ -7,6 +7,7 @@ import SignUp from "./pages/SignUp/SignUp";
 import SignUpComplete from "./pages/SignUpComplete/SignUpComplete";
 import WriteList from "./pages/WriteList/WriteList";
 import Find from "./pages/Find/Find";
+import RePassword from "./pages/Find/RePaasword/RePassword";
 
 const Router = () => {
   return (
@@ -19,6 +20,7 @@ const Router = () => {
         <Route path="/signupComplete" element={<SignUpComplete />} />
         <Route path="/writeList" element={<WriteList />} />
         <Route path="/find" element={<Find />} />
+        <Route path="/repassword" element={<RePassword />} />
       </Routes>
     </BrowserRouter>
   );
