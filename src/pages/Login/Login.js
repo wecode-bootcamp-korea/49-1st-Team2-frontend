@@ -15,7 +15,7 @@ const Login = () => {
     setUserPassword(event.target.value);
   };
 
-  const isTurnOn = userEmail.includes("@") && userPassword.length >= 5;
+  const isTurnOn = userEmail.includes("@") && userPassword.length >= 10;
 
   const req = () => {
     // fetch("http://10.58.52.220:8000/users/login", {

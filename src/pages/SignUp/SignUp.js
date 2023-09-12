@@ -109,7 +109,7 @@ const SignUp = () => {
   const completeSign =
     checkNickname &&
     checkEmail &&
-    userPassword.length > 8 &&
+    userPassword.length > 10 &&
     userPassword === userCheckPassword &&
     regex_pattern.test(userPassword);
 
