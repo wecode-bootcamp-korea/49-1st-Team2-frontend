@@ -29,18 +29,23 @@ const Login = () => {
     //   },
     // })
     //   .then((res) => {
-    //     return res.json();
+    //     if (res.ok === true) {
+    //       return res.json();
+    //     }
+    //     throw new Error("오류입니다.");
     //   })
+    //   .catch((error) => alert(error))
     //   .then((result) => {
     //     if (result.message === "login success") {
     //       console.log(result);
-    //       localStorage.setItem("token", result.token);
+    //       localStorage.setItem("token", result.toke);
     //       nav("/Main");
     //       alert("로그인 성공");
     //     } else {
     //       alert("로그인 실패");
     //     }
     //   });
+    nav("/Main");
   };
 
   return (

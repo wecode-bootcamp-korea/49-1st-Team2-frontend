@@ -1,0 +1,42 @@
+[
+  {
+    "id": 1,
+    "nickName": "홍길동",
+    "img": null,
+    "date": "12:50:32",
+    "reviewCnt": 33,
+    "content": "일라이자 효과는 인간의 사고 과정과 감정을 AI 시스템에 잘못 돌리는 사람들의 경향을 말하며, 따라서 시스템이 실제보다 더 지능적이라고 믿는다. 이 현상은 1966년 MIT 교수 조셉 웨이젠바움이 만든 챗봇인 ELIZA의 이름을 따서 명명되었다."
+  },
+  {
+    "id": 2,
+    "nickName": "나천재",
+    "img": null,
+    "date": "16:20:12",
+    "reviewCnt": 13,
+    "content": "성별과 성격과 같은 인간의 특성을 AI 음성 비서에게 돌리기"
+  },
+  {
+    "id": 3,
+    "nickName": "빵빵이",
+    "img": null,
+    "date": "02:02:04",
+    "reviewCnt": 4,
+    "content": "1차 프로젝트가 성공적으로 완료되었습니다."
+  },
+  {
+    "id": 4,
+    "nickName": "옥지",
+    "img": null,
+    "date": "11:35:12",
+    "reviewCnt": 55,
+    "content": "글 내용을 \n 가져와 보아요"
+  },
+  {
+    "id": 5,
+    "nickName": "안녕",
+    "img": null,
+    "date": "18:44:02",
+    "reviewCnt": 0,
+    "content": "wecode 49기 화이팅!!"
+  }
+]
