@@ -7,17 +7,28 @@ const SignUp = () => {
   const [userPassword, setUserPassword] = useState("");
   const [userCheckPassword, setUserCheckPassword] = useState("");
   const [userNickname, setNickname] = useState("");
+  const [userPhoneNumber, setPhoneNumber] = useState({
+    inter: "010",
+    number: "",
+  });
   const [checkEmail, setCheckEmail] = useState(false);
   const [checkNickname, setCheckNickname] = useState(false);
 
   const nav = useNavigate();
   const req = () => {
-    fetch("http://10.58.52.160:8000/users", {
+    const year = document.getElementById("birthYear").value;
+    const month = document.getElementById("birthMonth").value;
+    const day = document.getElementById("birthDay").value;
+
+    fetch("http://10.58.52.153:8000/users/signup", {
       method: "POST",
       body: JSON.stringify({
         email: userEmail,
         password: userPassword,
-        name: userNickname,
+        nickname: userNickname,
+        phoneNumber: userPhoneNumber.inter + "-" + userPhoneNumber.number,
+        birthday: year + "/" + month + "/" + day,
+        profileImage: "http://www.google.com",
       }),
       headers: {
         "Content-Type": "application/json;charset=utf-8",
@@ -27,20 +38,27 @@ const SignUp = () => {
         return res.json();
       })
       .then((result) => {
-        console.log(result);
+        if (result.message === "SIGNUP_SUCCESS") {
+          nav("/signupComplete");
+        } else {
+          alert("오류입니다.");
+        }
       });
-    nav("/signupComplete");
   };
 
   const Year = () => {
     const yearList = [];
 
     for (let i = 2023; i > 1799; i--) {
-      yearList.push(<option key={i}>{i}년</option>);
+      yearList.push(
+        <option key={i} value={i}>
+          {i}년
+        </option>
+      );
     }
-
     return (
-      <select id="birthYear" defaultValue={yearList[0]}>
+      <select id="birthYear">
+        <option value={0}>년도</option>
         {yearList}
       </select>
     );
@@ -50,11 +68,16 @@ const SignUp = () => {
     const monthList = [];
 
     for (let i = 1; i < 13; i++) {
-      monthList.push(<option key={i}>{i}월</option>);
+      monthList.push(
+        <option key={i} value={i}>
+          {i}월
+        </option>
+      );
     }
 
     return (
-      <select id="birthMonth" defaultValue={monthList[0]}>
+      <select id="birthMonth">
+        <option value={0}>월</option>
         {monthList}
       </select>
     );
@@ -64,11 +87,16 @@ const SignUp = () => {
     const dayList = [];
 
     for (let i = 1; i < 32; i++) {
-      dayList.push(<option key={i}>{i}일</option>);
+      dayList.push(
+        <option key={i} value={i}>
+          {i}일
+        </option>
+      );
     }
 
     return (
-      <select id="birthDay" defaultValue={dayList[0]}>
+      <select id="birthDay">
+        <option value={0}>일</option>
         {dayList}
       </select>
     );
@@ -102,6 +130,21 @@ const SignUp = () => {
   const checkNickNameBtn = (e) => {
     console.log("닉네임 확인 : " + userNickname);
     setCheckNickname(true);
+  };
+
+  const handleUserPhone = (e) => {
+    e.target.value = e.target.value
+      .replace(/[^0-9]/g, "")
+      .replace(/([0-9]{3,4})([0-9]{4})/g, "$1-$2");
+    setPhoneNumber((pre) => {
+      return { ...pre, number: e.target.value };
+    });
+  };
+
+  const handleInterNumber = (e) => {
+    setPhoneNumber((pre) => {
+      return { ...pre, inter: e.target.value };
+    });
   };
 
   const regex_pattern = /.*[!@#$%^&*()_+{}\[\]:;<>,.?~\\|-].*/;
@@ -203,16 +246,22 @@ const SignUp = () => {
               전화번호 <span className="subText">선택 사항</span>
             </label>
             <div className="telUser">
-              <select id="userPhone" defaultValue="num1">
-                <option value="num1">010</option>
-                <option value="num2">011</option>
-                <option value="num3">016</option>
-                <option value="num4">018</option>
+              <select
+                id="userPhone"
+                defaultValue="num1"
+                onChange={handleInterNumber}
+              >
+                <option value="010">010</option>
+                <option value="011">011</option>
+                <option value="016">016</option>
+                <option value="018">018</option>
               </select>
               <input
                 type="tel"
                 id="userTel"
                 placeholder="휴대폰 번호를 입력해 주세요"
+                onChange={handleUserPhone}
+                maxLength="9"
               />
             </div>
           </div>
