@@ -1,8 +1,13 @@
 import React from "react";
 import "./MainDetail.scss";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 
 const MainDetail = () => {
+  const loc = useLocation();
+  //key 값 사용해서 pk로 상세글, 댓글 useeffect로 가져오기
+  const key = loc.state.key;
+  console.log("id : " + key);
+
   return (
     <div className="mainDetail">
       <div className="container">

@@ -5,11 +5,8 @@ import { Link, useNavigate } from "react-router-dom";
 const Main = () => {
   const nav = useNavigate();
   const [list, setList] = useState([]);
-  const goWrite = (e) => {
-    const key = e.taget.key;
-    // 글의 고유 key 값을 넘겨서 상세보기 및 댓글 가져오기 위함.
-    // 이동한 페이지에서는 location.state.key로 받아야함.
-    nav("/writeList", { state: { id: key } });
+  const goWrite = () => {
+    nav("/writeList");
   };
 
   useEffect(() => {
@@ -22,10 +19,11 @@ const Main = () => {
       });
   }, []);
 
-  const goDetial = () => {
+  const goDetial = (key) => {
     // 게시글의 PK값 가져와서 이동해야하는 로직 짜야함.
-    nav("/mainDetail");
+    nav("/mainDetail", { state: { key: key } });
   };
+
   return (
     <div className="main">
       <div className="contentsBox">
@@ -35,10 +33,8 @@ const Main = () => {
             return (
               <div
                 className="content"
-                onClick={goDetial}
                 key={content.id}
-                id=", "
-                name
+                onClick={() => goDetial(content.id)}
               >
                 <div className="nameWrap">
                   <img
@@ -53,7 +49,7 @@ const Main = () => {
                   <p>{content.content}</p>
                 </div>
                 <div>
-                  <p className="comment"> 댓글{content.reviewCnt}</p>
+                  <p className="comment">댓글{content.reviewCnt}</p>
                 </div>
               </div>
             );

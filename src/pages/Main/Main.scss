@@ -61,6 +61,9 @@
     .textBox {
       text-align: justify;
       line-height: 24px;
+      p {
+        white-space: pre-line;
+      }
     }
     .comment {
       color: #999;
