@@ -105,6 +105,24 @@ const SignUp = () => {
   const checkEmailBtn = () => {
     if (userEmail.includes("@")) {
       setCheckEmail(true);
+      fetch("http://10.58.52.59:8000/users/checkduplicate", {
+        method: "POST",
+        body: JSON.stringify({
+          email: userEmail,
+        }),
+        headers: {
+          "Content-Type": "application/json;charset=utf-8",
+        },
+      })
+        .then((res) => res.json())
+        .then((isDouble) => {
+          if (isDouble.message === "Email is Already in Use") {
+            alert("이미 사용 중인 이메일입니다.");
+            setCheckEmail(false);
+          } else {
+            alert("사용 가능한 이메일입니다.");
+          }
+        });
     } else {
       alert("이메일에 @는 필수입니다.");
     }
@@ -115,6 +133,24 @@ const SignUp = () => {
       return null;
     } else {
       setCheckNickname(true);
+      fetch("http://10.58.52.59:8000/users/checkduplicate", {
+        method: "POST",
+        body: JSON.stringify({
+          nickname: userNickname,
+        }),
+        headers: {
+          "Content-Type": "application/json;charset=utf-8",
+        },
+      })
+        .then((res) => res.json())
+        .then((isDouble) => {
+          if (isDouble.message === "Nickname is Already in Use") {
+            alert("이미 사용 중인 닉네임입니다.");
+            setCheckNickname(false);
+          } else {
+            alert("사용 가능한 닉네임입니다.");
+          }
+        });
     }
   };
 
