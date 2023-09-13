@@ -7,7 +7,6 @@ const MainDetail = () => {
   //key 값 사용해서 pk로 상세글, 댓글 useeffect로 가져오기
   const key = loc.state.key;
   console.log("id : " + key);
-
   return (
     <div className="mainDetail">
       <div className="container">

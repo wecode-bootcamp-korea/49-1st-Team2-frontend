@@ -15,7 +15,6 @@ const Main = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
         setList(data);
       });
   }, []);
