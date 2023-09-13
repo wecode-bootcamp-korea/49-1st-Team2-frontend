@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./MainDetail.scss";
-import { Link, useNavigate, useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const MainDetail = () => {
   // const loc = useLocation();
