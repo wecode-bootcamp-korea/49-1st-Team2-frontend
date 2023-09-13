@@ -200,6 +200,7 @@
       .birthday {
         @include center;
         flex-direction: column;
+        width: 100%;
 
         > label {
           width: 100%;
@@ -220,12 +221,12 @@
           .month,
           .day {
             > select {
-              padding-right: 112px;
+              padding-right: 130px;
             }
           }
           .year {
             > select {
-              padding-right: 41px;
+              padding-right: 50px;
             }
           }
         }

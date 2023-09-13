@@ -1,12 +1,24 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./MainDetail.scss";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 
 const MainDetail = () => {
-  const loc = useLocation();
+  // const loc = useLocation();
   //key 값 사용해서 pk로 상세글, 댓글 useeffect로 가져오기
-  const key = loc.state.key;
-  console.log("id : " + key);
+  const [list, setList] = useState([]);
+
+  useEffect(() => {
+    fetch("/data/comment.json", {
+      method: "GET",
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        setList(data);
+      });
+  }, []);
+
+  // const key = loc.state.key;
+  // console.log("id : " + key);
   return (
     <div className="mainDetail">
       <div className="container">
@@ -43,241 +55,28 @@ const MainDetail = () => {
           <button className="bordBtn">댓글 작성</button>
         </div>
         <div className="comments">
-          {/* map으로 반복 */}
-          <div className="post">
-            <div className="postLeft">
-              <img src="/images/testImg.png" />
-            </div>
-            <div className="postRight">
-              <div className="content">
-                <div className="postHead">
-                  <span>Username</span>
-                  <div className="frame">
-                    <span className="Cgray60">00:00:00</span>
-                    <a className="Cred">삭제</a>
-                    <a>수정</a>
+          {list.map((list) => {
+            return (
+              <div className="post">
+                <div className="postLeft">
+                  <img src={list.img} />
+                </div>
+                <div className="postRight">
+                  <div className="content">
+                    <div className="postHead">
+                      <span>{list.nickName}</span>
+                      <div className="frame">
+                        <span className="Cgray60">{list.date}</span>
+                        <a className="Cred">삭제</a>
+                        <a>수정</a>
+                      </div>
+                    </div>
+                    <p>{list.comment}</p>
                   </div>
                 </div>
-                <p>답글 내용</p>
               </div>
-            </div>
-          </div>
-          <div className="post">
-            <div className="postLeft">
-              <img src="/images/testImg.png" />
-            </div>
-            <div className="postRight">
-              <div className="content">
-                <div className="postHead">
-                  <span>userName</span>
-                  <div className="frame">
-                    <span className="Cgray60">00:00:00</span>
-                    <a className="Cred">삭제</a>
-                    <a>수정</a>
-                  </div>
-                </div>
-                <p>답글 내용</p>
-              </div>
-            </div>
-          </div>
-          <div className="post">
-            <div className="postLeft">
-              <img src="/images/testImg.png" />
-            </div>
-            <div className="postRight">
-              <div className="content">
-                <div className="postHead">
-                  <span>userName</span>
-                  <div className="frame">
-                    <span className="Cgray60">00:00:00</span>
-                    <a className="Cred">삭제</a>
-                    <a>수정</a>
-                  </div>
-                </div>
-                <p>답글 내용</p>
-              </div>
-            </div>
-          </div>
-          <div className="post">
-            <div className="postLeft">
-              <img src="/images/testImg.png" />
-            </div>
-            <div className="postRight">
-              <div className="content">
-                <div className="postHead">
-                  <span>userName</span>
-                  <div className="frame">
-                    <span className="Cgray60">00:00:00</span>
-                    <a className="Cred">삭제</a>
-                    <a>수정</a>
-                  </div>
-                </div>
-                <p>답글 내용</p>
-              </div>
-            </div>
-          </div>
-          <div className="post">
-            <div className="postLeft">
-              <img src="/images/testImg.png" />
-            </div>
-            <div className="postRight">
-              <div className="content">
-                <div className="postHead">
-                  <span>userName</span>
-                  <div className="frame">
-                    <span className="Cgray60">00:00:00</span>
-                    <a className="Cred">삭제</a>
-                    <a>수정</a>
-                  </div>
-                </div>
-                <p>답글 내용</p>
-              </div>
-            </div>
-          </div>
-          <div className="post">
-            <div className="postLeft">
-              <img src="/images/testImg.png" />
-            </div>
-            <div className="postRight">
-              <div className="content">
-                <div className="postHead">
-                  <span>userName</span>
-                  <div className="frame">
-                    <span className="Cgray60">00:00:00</span>
-                    <a className="Cred">삭제</a>
-                    <a>수정</a>
-                  </div>
-                </div>
-                <p>답글 내용</p>
-              </div>
-            </div>
-          </div>
-          <div className="post">
-            <div className="postLeft">
-              <img src="/images/testImg.png" />
-            </div>
-            <div className="postRight">
-              <div className="content">
-                <div className="postHead">
-                  <span>userName</span>
-                  <div className="frame">
-                    <span className="Cgray60">00:00:00</span>
-                    <a className="Cred">삭제</a>
-                    <a>수정</a>
-                  </div>
-                </div>
-                <p>답글 내용</p>
-              </div>
-            </div>
-          </div>
-          <div className="post">
-            <div className="postLeft">
-              <img src="/images/testImg.png" />
-            </div>
-            <div className="postRight">
-              <div className="content">
-                <div className="postHead">
-                  <span>userName</span>
-                  <div className="frame">
-                    <span className="Cgray60">00:00:00</span>
-                    <a className="Cred">삭제</a>
-                    <a>수정</a>
-                  </div>
-                </div>
-                <p>답글 내용</p>
-              </div>
-            </div>
-          </div>
-          <div className="post">
-            <div className="postLeft">
-              <img src="/images/testImg.png" />
-            </div>
-            <div className="postRight">
-              <div className="content">
-                <div className="postHead">
-                  <span>userName</span>
-                  <div className="frame">
-                    <span className="Cgray60">00:00:00</span>
-                    <a className="Cred">삭제</a>
-                    <a>수정</a>
-                  </div>
-                </div>
-                <p>답글 내용</p>
-              </div>
-            </div>
-          </div>
-          <div className="post">
-            <div className="postLeft">
-              <img src="/images/testImg.png" />
-            </div>
-            <div className="postRight">
-              <div className="content">
-                <div className="postHead">
-                  <span>userName</span>
-                  <div className="frame">
-                    <span className="Cgray60">00:00:00</span>
-                    <a className="Cred">삭제</a>
-                    <a>수정</a>
-                  </div>
-                </div>
-                <p>답글 내용</p>
-              </div>
-            </div>
-          </div>
-          <div className="post">
-            <div className="postLeft">
-              <img src="/images/testImg.png" />
-            </div>
-            <div className="postRight">
-              <div className="content">
-                <div className="postHead">
-                  <span>userName</span>
-                  <div className="frame">
-                    <span className="Cgray60">00:00:00</span>
-                    <a className="Cred">삭제</a>
-                    <a>수정</a>
-                  </div>
-                </div>
-                <p>답글 내용</p>
-              </div>
-            </div>
-          </div>
-          <div className="post">
-            <div className="postLeft">
-              <img src="/images/testImg.png" />
-            </div>
-            <div className="postRight">
-              <div className="content">
-                <div className="postHead">
-                  <span>userName</span>
-                  <div className="frame">
-                    <span className="Cgray60">00:00:00</span>
-                    <a className="Cred">삭제</a>
-                    <a>수정</a>
-                  </div>
-                </div>
-                <p>답글 내용</p>
-              </div>
-            </div>
-          </div>
-          <div className="post">
-            <div className="postLeft">
-              <img src="/images/testImg.png" />
-            </div>
-            <div className="postRight">
-              <div className="content">
-                <div className="postHead">
-                  <span>userName</span>
-                  <div className="frame">
-                    <span className="Cgray60">00:00:00</span>
-                    <a className="Cred">삭제</a>
-                    <a>수정</a>
-                  </div>
-                </div>
-                <p>답글 내용</p>
-              </div>
-            </div>
-          </div>
+            );
+          })}
         </div>
       </div>
     </div>

@@ -1,0 +1,72 @@
+[
+  {
+    "id": 1,
+    "nickName": "홍길동",
+    "img": null,
+    "date": "12:50:32",
+    "content": "comment가 들어갑니다."
+  },
+  {
+    "id": 2,
+    "nickName": "나천재",
+    "img": null,
+    "date": "12:50:32",
+    "content": "comment가 들어갑니다."
+  },
+  {
+    "id": 3,
+    "nickName": "빵빵이",
+    "img": null,
+    "date": "12:50:32",
+    "content": "comment가 들어갑니다."
+  },
+  {
+    "id": 4,
+    "nickName": "옥지",
+    "img": null,
+    "date": "12:50:32",
+    "content": "comment가 들어갑니다."
+  },
+  {
+    "id": 5,
+    "nickName": "안녕",
+    "img": null,
+    "date": "12:50:32",
+    "content": "comment가 들어갑니다."
+  },
+  {
+    "id": 1,
+    "nickName": "홍길동",
+    "img": null,
+    "date": "12:50:32",
+    "content": "comment가 들어갑니다."
+  },
+  {
+    "id": 2,
+    "nickName": "나천재",
+    "img": null,
+    "date": "12:50:32",
+    "content": "comment가 들어갑니다."
+  },
+  {
+    "id": 3,
+    "nickName": "빵빵이",
+    "img": null,
+    "date": "12:50:32",
+    "content": "comment가 들어갑니다."
+  },
+  {
+    "id": 4,
+    "nickName": "옥지",
+    "img": null,
+    "date": "12:50:32",
+    "content": "comment가 들어갑니다."
+  },
+  {
+    "id": 5,
+    "nickName": "안녕",
+    "img": null,
+    "date": "12:50:32",
+    "content": "comment가 들어갑니다."
+  }
+]
