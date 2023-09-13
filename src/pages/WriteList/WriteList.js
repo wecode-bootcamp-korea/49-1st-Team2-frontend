@@ -8,12 +8,12 @@ const WriteList = () => {
   const [textSave, setTextSave] = useState("");
   const nickName = localStorage.getItem("nickName");
 
-  useEffect(() => {
-    if (!nickName) {
-      alert("유저 정보가 없습니다. 로그인을 먼저 해주세요.");
-      nav("/");
-    }
-  }, []);
+  // useEffect(() => {
+  //   if (!nickName) {
+  //     alert("유저 정보가 없습니다. 로그인을 먼저 해주세요.");
+  //     nav("/");
+  //   }
+  // }, []);
 
   const handleTextSave = (e) => {
     setTextSave(e.target.value);
