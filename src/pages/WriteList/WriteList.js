@@ -1,11 +1,19 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./WriteList.scss";
 import { Link, useNavigate } from "react-router-dom";
 import "../Login/Login";
 
-const WriteList = (props) => {
+const WriteList = () => {
   const nav = useNavigate();
   const [textSave, setTextSave] = useState("");
+  const nickName = localStorage.getItem("nickName");
+
+  useEffect(() => {
+    if (!nickName) {
+      alert("유저 정보가 없습니다. 로그인을 먼저 해주세요.");
+      nav("/");
+    }
+  }, []);
 
   const handleTextSave = (e) => {
     setTextSave(e.target.value);
@@ -15,6 +23,8 @@ const WriteList = (props) => {
     nav("/main");
   };
 
+  useEffect(() => {});
+
   // fetch("http://10.58.52.97:8000/login", {
   //   method: "GET",
   // })
@@ -22,28 +32,27 @@ const WriteList = (props) => {
   //   .then();
 
   const req = () => {
-    // fetch("http://10.58.52.97:8000/login", {
-    //   method: "POST",
-    //   body: JSON.stringify({
-    //     text: textSave,
-    //   }),
-    //   headers: {
-    //     "Content-Type": "application/json;charset=utf-8",
-    //     Authorization: localStorage.getItem("token"),
-    //   },
-    // })
-    //   .then((res) => {
-    //     return res.json();
-    //   })
-    //   .then((result) => {
-    //     console.log(result);
-    //     if (token === "Login Successful") {
-    //       alert("게시글이 등록이 완료되었습니다.");
-    //       Link("/Main");
-    //     } else {
-    //       alert("오류가 발생했습니다.");
-    //     }
-    //   });
+    fetch("http://10.58.52.59:8000/threads", {
+      method: "POST",
+      body: JSON.stringify({
+        content: textSave,
+      }),
+      headers: {
+        "Content-Type": "application/json;charset=utf-8",
+        Authorization: localStorage.getItem("token"),
+      },
+    })
+      .then((res) => {
+        return res.json();
+      })
+      .then((result) => {
+        if (result.message === "post created") {
+          alert("게시글이 등록이 완료되었습니다.");
+          nav("/Main");
+        } else {
+          alert("오류가 발생했습니다.");
+        }
+      });
   };
 
   return (
@@ -52,7 +61,7 @@ const WriteList = (props) => {
         <div className="writeWrap">
           <img src="/images/testImg.png" />
           <div className="writeContent">
-            <p>nickname</p>
+            <p>{nickName}</p>
             <textarea
               placeholder="스레드를 시작하세요."
               onChange={handleTextSave}
