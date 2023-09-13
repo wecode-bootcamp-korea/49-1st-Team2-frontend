@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./SignUp.scss";
 import { Link, useNavigate } from "react-router-dom";
 
@@ -13,13 +13,15 @@ const SignUp = () => {
   });
   const [checkEmail, setCheckEmail] = useState(false);
   const [checkNickname, setCheckNickname] = useState(false);
+  const [year, setYear] = useState("0");
+  const [month, setMonth] = useState("0");
+  const [day, setDay] = useState("0");
+  const [yearList, setYearList] = useState([]);
+  const [monthList, setMonthList] = useState([]);
+  const [dayList, setDayList] = useState([]);
 
   const nav = useNavigate();
   const req = () => {
-    const year = document.getElementById("birthYear").value;
-    const month = document.getElementById("birthMonth").value;
-    const day = document.getElementById("birthDay").value;
-
     fetch("http://10.58.52.153:8000/users/signup", {
       method: "POST",
       body: JSON.stringify({
@@ -31,7 +33,7 @@ const SignUp = () => {
             ? userPhoneNumber.inter + "-" + userPhoneNumber.number
             : null,
         birthday:
-          year == 0 || month == 0 || day == 0
+          year === "0" || month === "0" || day == "0"
             ? null
             : year + "/" + month + "/" + day,
         profileImage: "http://www.google.com",
@@ -52,60 +54,36 @@ const SignUp = () => {
       });
   };
 
-  const Year = () => {
-    const yearList = [];
+  useEffect(() => {
+    let yearList2 = [];
+    let monthList2 = [];
+    let dayList2 = [];
 
     for (let i = 2023; i > 1799; i--) {
-      yearList.push(
-        <option key={i} value={i}>
-          {i}년
-        </option>
-      );
+      yearList2.push(i);
     }
-    return (
-      <select id="birthYear">
-        <option value={0}>년도</option>
-        {yearList}
-      </select>
-    );
+    for (let j = 1; j < 13; j++) {
+      monthList2.push(j);
+    }
+    for (let k = 1; k < 32; k++) {
+      dayList2.push(k);
+    }
+
+    setYearList(yearList2);
+    setMonthList(monthList2);
+    setDayList(dayList2);
+  }, []);
+
+  const handleYear = (e) => {
+    setYear(e.target.value);
   };
 
-  const Month = () => {
-    const monthList = [];
-
-    for (let i = 1; i < 13; i++) {
-      monthList.push(
-        <option key={i} value={i}>
-          {i}월
-        </option>
-      );
-    }
-
-    return (
-      <select id="birthMonth">
-        <option value={0}>월</option>
-        {monthList}
-      </select>
-    );
+  const handleMonth = (e) => {
+    setMonth(e.target.value);
   };
 
-  const Day = () => {
-    const dayList = [];
-
-    for (let i = 1; i < 32; i++) {
-      dayList.push(
-        <option key={i} value={i}>
-          {i}일
-        </option>
-      );
-    }
-
-    return (
-      <select id="birthDay">
-        <option value={0}>일</option>
-        {dayList}
-      </select>
-    );
+  const handleDay = (e) => {
+    setDay(e.target.value);
   };
 
   const handleUserEmail = (e) => {
@@ -279,13 +257,28 @@ const SignUp = () => {
             </label>
             <div className="birthSelcet">
               <div className="year">
-                <Year />
+                <select onChange={handleYear}>
+                  <option value="0">년도</option>
+                  {yearList.map((yearList) => {
+                    return <option value={yearList}>{yearList}</option>;
+                  })}
+                </select>
               </div>
               <div className="month">
-                <Month />
+                <select onChange={handleMonth}>
+                  <option value="0">월</option>
+                  {monthList.map((monthList) => {
+                    return <option value={monthList}>{monthList}</option>;
+                  })}
+                </select>
               </div>
               <div className="day">
-                <Day />
+                <select onChange={handleDay}>
+                  <option value="0">일</option>
+                  {dayList.map((dayList) => {
+                    return <option value={dayList}>{dayList}</option>;
+                  })}
+                </select>
               </div>
             </div>
           </div>
