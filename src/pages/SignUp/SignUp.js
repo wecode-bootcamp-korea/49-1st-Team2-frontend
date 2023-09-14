@@ -36,7 +36,7 @@ const SignUp = () => {
           year === "0" || month === "0" || day == "0"
             ? null
             : year + "/" + month + "/" + day,
-        profileImage: "http://www.google.com",
+        profileImage: "",
       }),
       headers: {
         "Content-Type": "application/json;charset=utf-8",
