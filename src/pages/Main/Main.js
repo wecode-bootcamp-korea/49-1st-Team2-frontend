@@ -47,9 +47,33 @@ const Main = () => {
     //fetch문 써서 삭제되면 밑에 2가지 방법 실행
     //setList((info) => info.filter((item) => item.id !== key)); 프론트엔드에서 직접 데이터를 삭제
     //window.location.reload(); 새로고침해서 백엔드에서 데이터 리로딩
+
+    fetch("http://10.58.52.249:8000/threads", {
+      method: "DELETE",
+      body: JSON.stringify({
+        postId: key,
+      }),
+      headers: {
+        "Content-Type": "application/json;charset=utf-8",
+        Authorization: localStorage.getItem("token"),
+      },
+    })
+      .then((res) => {
+        return res.json();
+      })
+      .then((result) => {
+        console.log(result);
+        if (result.message === "post deleted") {
+          setList((info) => info.filter((item) => item.id !== key));
+        } else {
+          alert(result.message);
+        }
+      });
   };
   //글 수정
-  const updateContents = (key) => {};
+  const updateContents = (key, content) => {
+    nav("/writeList", { state: { key, content } });
+  };
 
   return (
     <div className="main">
@@ -81,7 +105,13 @@ const Main = () => {
                           >
                             삭제
                           </a>
-                          <a onClick={() => updateContents(content.id)}>수정</a>
+                          <a
+                            onClick={() =>
+                              updateContents(content.id, content.content)
+                            }
+                          >
+                            수정
+                          </a>
                         </div>
                       )}
                     </div>
@@ -91,7 +121,7 @@ const Main = () => {
                   <p>{content.content}</p>
                 </div>
                 <div>
-                  <p className="comment">댓글{content.reviewCnt}</p>
+                  <p className="comment">댓글 {content.comments.length}</p>
                 </div>
               </div>
             );

@@ -1,12 +1,17 @@
 import React, { useEffect, useState } from "react";
 import "./WriteList.scss";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import "../Login/Login";
 
 const WriteList = () => {
   const nav = useNavigate();
   const [textSave, setTextSave] = useState("");
   const nickName = localStorage.getItem("nickName");
+  const loc = useLocation();
+  let key = null;
+  if (loc.state.key != null) {
+    key = loc.state.key;
+  }
 
   // useEffect(() => {
   //   if (!nickName) {
@@ -29,11 +34,40 @@ const WriteList = () => {
   //   .then()
   //   .then();
 
+  const update = () => {
+    if (textSave.length === 0) {
+      alert("수정된 부분이 없습니다.");
+    } else {
+      fetch("http://10.58.52.249:8000/threads", {
+        method: "PATCH",
+        body: JSON.stringify({
+          content: textSave,
+          postId: key,
+        }),
+        headers: {
+          "Content-Type": "application/json;charset=utf-8",
+          Authorization: localStorage.getItem("token"),
+        },
+      })
+        .then((res) => {
+          return res.json();
+        })
+        .then((result) => {
+          if (result.message === "post updated") {
+            alert("게시글이 수정이 완료되었습니다.");
+            nav("/main");
+          } else {
+            alert(result.message);
+          }
+        });
+    }
+  };
+
   const req = () => {
     if (textSave.length === 0) {
       alert("게시글을 입력해주세요.");
     } else {
-      fetch("http://10.58.52.59:8000/threads", {
+      fetch("http://10.58.52.249:8000/threads", {
         method: "POST",
         body: JSON.stringify({
           content: textSave,
@@ -72,7 +106,9 @@ const WriteList = () => {
               <textarea
                 placeholder="스레드를 시작하세요."
                 onChange={handleTextSave}
-              ></textarea>
+              >
+                {key && loc.state.content}
+              </textarea>
             </div>
           </div>
         </div>
@@ -80,8 +116,8 @@ const WriteList = () => {
           <button className="bordBtn" onClick={goBack}>
             취소
           </button>
-          <button className="fillBtn" onClick={req}>
-            게시
+          <button className="fillBtn" onClick={key ? update : req}>
+            {key ? "수정" : "등록"}
           </button>
         </div>
       </div>
