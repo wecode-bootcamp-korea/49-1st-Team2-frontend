@@ -49,11 +49,26 @@
       > label {
         font-weight: bold;
         position: relative;
+        display: inline-flex;
         > span {
           position: absolute;
           right: 0;
           font-weight: normal;
           color: #999;
+        }
+
+        .frame {
+          display: flex;
+          align-items: center;
+          gap: 12px;
+          position: absolute;
+          right: 0;
+
+          div {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+          }
         }
       }
     }

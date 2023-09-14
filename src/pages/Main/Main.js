@@ -5,6 +5,9 @@ import { Link, useNavigate } from "react-router-dom";
 const Main = () => {
   const nav = useNavigate();
   const [list, setList] = useState([]);
+  const nickName = localStorage.getItem("nickName");
+  // 테스트
+  // localStorage.setItem("nickName", "홍길동");
   const goWrite = () => {
     nav("/writeList");
   };
@@ -24,6 +27,11 @@ const Main = () => {
     nav("/mainDetail", { state: { key: key } });
   };
 
+  //글 삭제
+  const deleteContents = (key) => {};
+  //글 수정
+  const updateContents = (key) => {};
+
   return (
     <div className="main">
       <div className="contentsBox">
@@ -31,21 +39,32 @@ const Main = () => {
           {/* 여기 부분 map으로 불러옴. */}
           {list.map((content) => {
             return (
-              <div
-                className="content"
-                key={content.id}
-                onClick={() => goDetial(content.id)}
-              >
+              <div className="content" key={content.id}>
                 <div className="nameWrap">
                   <img
                     src={content.img ? content.img : "/images/testImg.png"}
                   />
                   <label>
                     {content.nickName}
-                    <span>{content.date}</span>
+                    {/* <span>{content.date}</span> */}
+
+                    <div className="frame">
+                      <span className="Cgray60">{content.date}</span>
+                      {nickName == content.nickName && (
+                        <div>
+                          <a
+                            className="Cred"
+                            onClick={() => deleteContents(content.id)}
+                          >
+                            삭제
+                          </a>
+                          <a onClick={() => updateContents(content.id)}>수정</a>
+                        </div>
+                      )}
+                    </div>
                   </label>
                 </div>
-                <div className="textBox">
+                <div className="textBox" onClick={() => goDetial(content.id)}>
                   <p>{content.content}</p>
                 </div>
                 <div>
