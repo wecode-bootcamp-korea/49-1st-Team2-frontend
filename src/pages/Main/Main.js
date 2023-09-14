@@ -28,7 +28,11 @@ const Main = () => {
   };
 
   //글 삭제
-  const deleteContents = (key) => {};
+  const deleteContents = (key) => {
+    //fetch문 써서 삭제되면 밑에 2가지 방법 실행
+    //setList((info) => info.filter((item) => item.id !== key)); 프론트엔드에서 직접 데이터를 삭제
+    //window.location.reload(); 새로고침해서 백엔드에서 데이터 리로딩
+  };
   //글 수정
   const updateContents = (key) => {};
 
