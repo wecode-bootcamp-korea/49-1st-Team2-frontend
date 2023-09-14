@@ -5,8 +5,40 @@ import { Link } from "react-router-dom";
 const MainDetail = () => {
   // const loc = useLocation();
   //key 값 사용해서 pk로 상세글, 댓글 useeffect로 가져오기
-  const [list, setList] = useState([]);
+  // const [post, setpost] = useState({});
+  // const [commentList, setCommentList] = useState([[]]);
+  const nickName = localStorage.getItem("nickName");
 
+  //댓글 삭제
+  // const deleteComment = () => {};
+  //댓글 수정
+  // const updateComment = () => {};
+
+  // useEffect(() => {
+  //   fetch("/data/comment.json", {
+  //     method: "POST",
+  //     body: JSON.stringify({
+  //       id: key,
+  //     }),
+  //     headers: {
+  //       "Content-Type": "application/json;charset=utf-8",
+  //     },
+  //   })
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       setpost({
+  //         nickName: data.nickName,
+  //         content: data.content,
+  //         img: data.img,
+  //       });
+  //       setCommentList([data.comment]);
+  //     });
+  // }, []);
+
+  // const key = loc.state.key;
+  // console.log("id : " + key);
+
+  const [list, setList] = useState([]);
   useEffect(() => {
     fetch("/data/comment.json", {
       method: "GET",
@@ -16,9 +48,17 @@ const MainDetail = () => {
         setList(data);
       });
   }, []);
+  const [list1, setList1] = useState([]);
+  useEffect(() => {
+    fetch("/data/contents.json", {
+      method: "GET",
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        setList1(data);
+      });
+  }, []);
 
-  // const key = loc.state.key;
-  // console.log("id : " + key);
   return (
     <div className="mainDetail">
       <div className="container">
@@ -32,23 +72,19 @@ const MainDetail = () => {
           뒤로
         </header>
         <div className="contentsCompo">
-          <div className="nameWrap">
-            <img src="/images/testImg.png" />
+          {/* <div className="nameWrap">
+            <img src={post.img} />
             <label>
-              Name<span>00:00:00</span>
+              {post.nickName}
+              <span>{post.date}</span>
             </label>
           </div>
           <div className="textBox">
-            <p>
-              일라이자 효과는 인간의 사고 과정과 감정을 AI 시스템에 잘못 돌리는
-              사람들의 경향을 말하며, 따라서 시스템이 실제보다 더 지능적이라고
-              믿는다. 이 현상은 1966년 MIT 교수 조셉 웨이젠바움이 만든 챗봇인
-              ELIZA의 이름을 따서 명명되었다.
-            </p>
+            <p>{post.content}</p>
           </div>
           <div className="commentGo">
-            <p> 댓글00</p>
-          </div>
+            <p> 댓글{commentList.length}</p>
+          </div> */}
         </div>
         <div className="comment">
           <input className="upload"></input>
@@ -59,7 +95,7 @@ const MainDetail = () => {
             return (
               <div className="post">
                 <div className="postLeft">
-                  <img src={list.img} />
+                  <img src={list.img ? list.img : "/images/testImg.png"} />
                 </div>
                 <div className="postRight">
                   <div className="content">
@@ -67,8 +103,39 @@ const MainDetail = () => {
                       <span>{list.nickName}</span>
                       <div className="frame">
                         <span className="Cgray60">{list.date}</span>
-                        <a className="Cred">삭제</a>
-                        <a>수정</a>
+                        {"홍길동" == list.nickName && (
+                          <div>
+                            <a className="Cred">삭제</a>
+                            <a>수정</a>
+                          </div>
+                        )}
+                      </div>
+                    </div>
+                    <p>{list.content}</p>
+                  </div>
+                </div>
+              </div>
+            );
+          })}
+          {/* {commentList.map((list) => {
+            return (
+              <div className="post">
+                <div className="postLeft">
+                  <img src={list.img ? list.img : "/images/testImg.png"} />
+                </div>
+                <div className="postRight">
+                  <div className="content">
+                    <div className="postHead">
+                      <span>{list.nickName}</span>
+                      <div className="frame">
+                        <span className="Cgray60">{list.date}</span>
+                        {nickName == list.nickName && (
+                          <div>
+                            <a className="Cred">삭제</a>
+                            <a>수정</a>
+                          </div>
+                        )}
+                        <a onClick={updateComment}>수정</a>
                       </div>
                     </div>
                     <p>{list.comment}</p>
@@ -76,7 +143,7 @@ const MainDetail = () => {
                 </div>
               </div>
             );
-          })}
+          })} */}
         </div>
       </div>
     </div>

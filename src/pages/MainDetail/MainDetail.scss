@@ -153,12 +153,15 @@
             align-self: stretch;
             > span {
               font-weight: bold;
+              margin-right: 0;
+            }
+            .Cred:first-child {
+              margin: 0 12px;
             }
           }
           .frame {
             display: flex;
             align-items: center;
-            gap: 12px;
           }
         }
       }
