@@ -4,7 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 
 const Main = () => {
   const nav = useNavigate();
-  const [list, setList] = useState([]);
+  const [list, setList] = useState();
   const nickName = localStorage.getItem("nickName");
   // 테스트
   // localStorage.setItem("nickName", "홍길동");
@@ -12,13 +12,28 @@ const Main = () => {
     nav("/writeList");
   };
 
+  //mockdata
+  // useEffect(() => {
+  //   fetch("/data/contents.json", {
+  //     method: "GET",
+  //   })
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       setList(data);
+  //     });
+  // }, []);
+
   useEffect(() => {
-    fetch("/data/contents.json", {
-      method: "GET",
+    fetch("http://10.58.52.249:8000/threads", {
+      headers: {
+        Authorization: localStorage.getItem("token"),
+      },
     })
-      .then((res) => res.json())
-      .then((data) => {
-        setList(data);
+      .then((res) => {
+        return res.json();
+      })
+      .then((result) => {
+        setList(result.data);
       });
   }, []);
 
@@ -41,20 +56,24 @@ const Main = () => {
       <div className="contentsBox">
         <div className="contentList">
           {/* 여기 부분 map으로 불러옴. */}
-          {list.map((content) => {
+          {list?.map((content) => {
             return (
               <div className="content" key={content.id}>
                 <div className="nameWrap">
                   <img
-                    src={content.img ? content.img : "/images/testImg.png"}
+                    src={
+                      content.profileImage
+                        ? content.profileImage
+                        : "/images/testImg.png"
+                    }
                   />
                   <label>
-                    {content.nickName}
+                    {content.nickname}
                     {/* <span>{content.date}</span> */}
 
                     <div className="frame">
-                      <span className="Cgray60">{content.date}</span>
-                      {nickName == content.nickName && (
+                      <span className="Cgray60">{content.createdAt}</span>
+                      {nickName == content.nickname && (
                         <div>
                           <a
                             className="Cred"

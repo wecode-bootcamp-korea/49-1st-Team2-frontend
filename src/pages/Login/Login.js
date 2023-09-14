@@ -18,34 +18,34 @@ const Login = () => {
   const isTurnOn = userEmail.includes("@") && userPassword.length >= 10;
 
   const req = () => {
-    // fetch("http://10.58.52.59:8000/users/login", {
-    //   method: "POST",
-    //   body: JSON.stringify({
-    //     email: userEmail,
-    //     password: userPassword,
-    //   }),
-    //   headers: {
-    //     "Content-Type": "application/json;charset=utf-8",
-    //   },
-    // })
-    //   .then((res) => {
-    //     if (res.ok === true) {
-    //       return res.json();
-    //     }
-    //     throw new Error("오류입니다.");
-    //   })
-    //   .catch((error) => alert(error))
-    //   .then((result) => {
-    //     if (result.message === "login success") {
-    //       localStorage.setItem("token", result.token);
-    //       localStorage.setItem("userCode", result.id);
-    //       localStorage.setItem("nickName", result.nickName);
-    //       nav("/Main");
-    //       alert("로그인 성공");
-    //     } else {
-    //       alert("로그인 실패");
-    //     }
-    //   });
+    fetch("http://10.58.52.249:8000/users/login", {
+      method: "POST",
+      body: JSON.stringify({
+        email: userEmail,
+        password: userPassword,
+      }),
+      headers: {
+        "Content-Type": "application/json;charset=utf-8",
+      },
+    })
+      .then((res) => {
+        if (res.ok === true) {
+          return res.json();
+        }
+        throw new Error("오류입니다.");
+      })
+      .catch((error) => alert(error))
+      .then((result) => {
+        if (result.message === "login success") {
+          localStorage.setItem("token", result.token);
+          localStorage.setItem("userCode", result.id);
+          localStorage.setItem("nickName", result.nickname);
+          nav("/Main");
+          alert("로그인 성공");
+        } else {
+          alert("로그인 실패");
+        }
+      });
     nav("/Main");
   };
 
