@@ -45,6 +45,10 @@
       .nameWrap {
         @include center;
         width: 100%;
+        > img {
+          width: 48px;
+          height: 48px;
+        }
         > label {
           width: 100%;
           position: relative;

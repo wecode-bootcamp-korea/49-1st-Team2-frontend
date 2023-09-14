@@ -22,7 +22,7 @@ const SignUp = () => {
 
   const nav = useNavigate();
   const req = () => {
-    fetch("http://10.58.52.249:8000/users/signup", {
+    fetch("http://10.58.52.185:8000/users/signup", {
       method: "POST",
       body: JSON.stringify({
         email: userEmail,
@@ -105,7 +105,7 @@ const SignUp = () => {
   const checkEmailBtn = () => {
     if (userEmail.includes("@")) {
       setCheckEmail(true);
-      fetch("http://10.58.52.249:8000/users/checkduplicate", {
+      fetch("http://10.58.52.185:8000/users/checkduplicate", {
         method: "POST",
         body: JSON.stringify({
           email: userEmail,
@@ -133,7 +133,7 @@ const SignUp = () => {
       return null;
     } else {
       setCheckNickname(true);
-      fetch("http://10.58.52.249:8000/users/checkduplicate", {
+      fetch("http://10.58.52.185:8000/users/checkduplicate", {
         method: "POST",
         body: JSON.stringify({
           nickname: userNickname,

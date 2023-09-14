@@ -24,7 +24,7 @@ const Main = () => {
   // }, []);
 
   useEffect(() => {
-    fetch("http://10.58.52.249:8000/threads", {
+    fetch("http://10.58.52.185:8000/threads", {
       headers: {
         Authorization: localStorage.getItem("token"),
       },
@@ -48,7 +48,7 @@ const Main = () => {
     //setList((info) => info.filter((item) => item.id !== key)); 프론트엔드에서 직접 데이터를 삭제
     //window.location.reload(); 새로고침해서 백엔드에서 데이터 리로딩
 
-    fetch("http://10.58.52.249:8000/threads", {
+    fetch("http://10.58.52.185:8000/threads", {
       method: "DELETE",
       body: JSON.stringify({
         postId: key,

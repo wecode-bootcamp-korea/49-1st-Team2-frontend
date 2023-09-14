@@ -13,27 +13,27 @@ const Find = () => {
   };
 
   const req = () => {
-    // fetch("http://10.58.52.160:8000/users", {
-    //   method: "POST",
-    //   body: JSON.stringify({
-    //     email: userEmail,
-    //     url: "http://localhost:3000/repassword",
-    //   }),
-    //   headers: {
-    //     "Content-Type": "application/json;charset=utf-8",
-    //   },
-    // })
-    //   .then((res) => {
-    //     return res.json();
-    //   })
-    //   .then((result) => {
-    //     if (req.ok === false) {
-    //       alert("가입 이력이 없는 회원입니다.");
-    //     } else {
-    //       setPopUp("on");
-    //     }
-    //     console.log(result);
-    //   });
+    fetch("http://http://10.58.52.185:8000/users", {
+      method: "POST",
+      body: JSON.stringify({
+        email: userEmail,
+        url: "http://localhost:3000/repassword",
+      }),
+      headers: {
+        "Content-Type": "application/json;charset=utf-8",
+      },
+    })
+      .then((res) => {
+        return res.json();
+      })
+      .then((result) => {
+        if (req.ok === false) {
+          alert("가입 이력이 없는 회원입니다.");
+        } else {
+          setPopUp("on");
+        }
+        console.log(result);
+      });
   };
 
   return (

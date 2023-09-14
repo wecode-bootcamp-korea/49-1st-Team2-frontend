@@ -9,7 +9,7 @@ const WriteList = () => {
   const nickName = localStorage.getItem("nickName");
   const loc = useLocation();
   let key = null;
-  if (loc.state.key != null) {
+  if (loc.state != null) {
     key = loc.state.key;
   }
 
@@ -38,7 +38,7 @@ const WriteList = () => {
     if (textSave.length === 0) {
       alert("수정된 부분이 없습니다.");
     } else {
-      fetch("http://10.58.52.249:8000/threads", {
+      fetch("http://10.58.52.185:8000/threads", {
         method: "PATCH",
         body: JSON.stringify({
           content: textSave,
@@ -67,7 +67,7 @@ const WriteList = () => {
     if (textSave.length === 0) {
       alert("게시글을 입력해주세요.");
     } else {
-      fetch("http://10.58.52.249:8000/threads", {
+      fetch("http://10.58.52.185:8000/threads", {
         method: "POST",
         body: JSON.stringify({
           content: textSave,
