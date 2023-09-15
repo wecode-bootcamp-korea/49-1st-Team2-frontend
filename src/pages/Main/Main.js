@@ -96,7 +96,6 @@ const Main = () => {
                     {/* <span>{content.date}</span> */}
 
                     <div className="frame">
-                      <span className="Cgray60">{content.createdAt}</span>
                       {nickName == content.nickname && (
                         <div>
                           <a
@@ -114,6 +113,7 @@ const Main = () => {
                           </a>
                         </div>
                       )}
+                      <span className="Cgray60">{content.createdAt}</span>
                     </div>
                   </label>
                 </div>
