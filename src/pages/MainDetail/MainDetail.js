@@ -4,6 +4,7 @@ import { Link, useLocation } from "react-router-dom";
 
 const MainDetail = () => {
   const loc = useLocation();
+  // eslint-disable-next-line no-restricted-globals
   const [post, setpost] = useState({});
   const [commentList, setCommentList] = useState([]);
   const [commentPut, setCommentPut] = useState("");
@@ -43,9 +44,7 @@ const MainDetail = () => {
       .then((res) => res.json())
       .then((result) => {
         setpost(result.data);
-        console.log(result.data);
         setCommentList(result.data.comments);
-        console.log(commentList);
       });
   }, []);
 
@@ -76,7 +75,7 @@ const MainDetail = () => {
         })
         .then(() => {
           alert("댓글이 등록되었습니다.");
-          location.reload();
+          window.location.reload();
         });
     }
   };
@@ -131,7 +130,7 @@ const MainDetail = () => {
         })
         .then(() => {
           alert("댓글이 수정되었습니다.");
-          location.reload();
+          window.location.reload();
         });
     }
   };
