@@ -41,7 +41,7 @@ const Main = () => {
 
   //글 삭제
   const deleteContents = (key) => {
-    fetch("http://10.58.52.185:8000/threads", {
+    fetch("http://10.58.52.104:8000/threads", {
       method: "DELETE",
       body: JSON.stringify({
         postId: key,
