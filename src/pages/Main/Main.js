@@ -6,8 +6,6 @@ const Main = () => {
   const nav = useNavigate();
   const [list, setList] = useState();
   const nickName = localStorage.getItem("nickName");
-  // 테스트
-  // localStorage.setItem("nickName", "홍길동");
   const goWrite = () => {
     nav("/writeList");
   };
@@ -24,7 +22,7 @@ const Main = () => {
   // }, []);
 
   useEffect(() => {
-    fetch("http://10.58.52.185:8000/threads", {
+    fetch("http://10.58.52.104:8000/threads", {
       headers: {
         Authorization: localStorage.getItem("token"),
       },
@@ -38,16 +36,11 @@ const Main = () => {
   }, []);
 
   const goDetial = (key) => {
-    // 게시글의 PK값 가져와서 이동해야하는 로직 짜야함.
     nav("/mainDetail", { state: { key: key } });
   };
 
   //글 삭제
   const deleteContents = (key) => {
-    //fetch문 써서 삭제되면 밑에 2가지 방법 실행
-    //setList((info) => info.filter((item) => item.id !== key)); 프론트엔드에서 직접 데이터를 삭제
-    //window.location.reload(); 새로고침해서 백엔드에서 데이터 리로딩
-
     fetch("http://10.58.52.185:8000/threads", {
       method: "DELETE",
       body: JSON.stringify({
@@ -62,9 +55,8 @@ const Main = () => {
         return res.json();
       })
       .then((result) => {
-        console.log(result);
         if (result.message === "post deleted") {
-          setList((info) => info.filter((item) => item.id !== key));
+          setList((pre) => pre.filter((item) => item.id !== key));
         } else {
           alert(result.message);
         }
@@ -79,7 +71,6 @@ const Main = () => {
     <div className="main">
       <div className="contentsBox">
         <div className="contentList">
-          {/* 여기 부분 map으로 불러옴. */}
           {list?.map((content) => {
             return (
               <div className="content" key={content.id}>
@@ -93,8 +84,6 @@ const Main = () => {
                   />
                   <label>
                     {content.nickname}
-                    {/* <span>{content.date}</span> */}
-
                     <div className="frame">
                       {nickName == content.nickname && (
                         <div>

@@ -18,8 +18,7 @@ const Login = () => {
   const isTurnOn = userEmail.includes("@") && userPassword.length >= 10;
 
   const req = () => {
-    console.log(userPassword);
-    fetch("http://10.58.52.185:8000/users/login", {
+    fetch("http://10.58.52.104:8000/users/login", {
       method: "POST",
       body: JSON.stringify({
         email: userEmail,
